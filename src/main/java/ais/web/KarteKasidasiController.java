@@ -16,8 +16,13 @@ public class KarteKasidasiController {
 
 	@GetMapping
 	public String index(Model model) {
-		List<KarteKasidasiDto>dataList = CsvUtil.importKasidasiCSV("C:\\Users\\yuki\\Desktop\\Java関係\\pleiades\\workspace\\ais2\\data\\kasidasi.csv");
+		List<KarteKasidasiDto>dataList = CsvUtil.importKasidasiCSV("F:\\work\\dev\\workspaces\\samurai_samples\\ais-spring\\src\\main\\resources\\data\\kasidasi.csv");
 		model.addAttribute("datalList",dataList);
 		return "kasidasi/index" ;
+	}
+
+	@GetMapping(path="search")
+	public String search(Model model) {
+		return "";
 	}
 }
