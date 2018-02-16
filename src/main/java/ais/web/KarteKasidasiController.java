@@ -23,6 +23,6 @@ public class KarteKasidasiController {
 
 	@GetMapping(path="search")
 	public String search(Model model) {
-		return "";
+		return "kasidasi/search";
 	}
 }
