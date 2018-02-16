@@ -160,7 +160,7 @@
     </div>
 
     <div id="contents">
-        <form   id="form1" th:action="@{/ais.util/CsvUtil}" th:object="model" method="get">
+        <form   id="form1" th:action="@{/kasidasi/search}"  th:object="${kasidasiForm}" method="get">
             <div id="type">
                <label class="kasidasiType"><input type="radio" name="kasidasiType"/>貸出</label>
                <label class="kasidasiType"><input type="radio" name="kasidasiType"/>返却</label>
@@ -201,7 +201,7 @@
                <tr class="detailCols"><th>氏名 </th><th>フリガナ</th><th>ID</th><th>カルテ番号</th><th>診療科</th><th>入院日</th><th>退院日</th><th>提出先</th><th>貸出状況</th><th>選択</th></tr>
 
                <tr th:each="data : ${dataList}">
-               <td th:text="${data.name}"></td><td th:text="${dto.kana}"></td><td th:text="${dto.id}"></td><td th:text="${dto.karteNo}"></td><td th:text="${dto.kaMei}"></td><td th:text="${dto.nyuinDate}"></td><td th:text="${dto.taiinDate}"></td><td th:text="${dto.teisyutu}"></td><td th:text="${dto.kasidasi}">
+               <td th:text="${data.name}"></td><td th:text="${data.kana}"></td><td th:text="${data.id}"></td><td th:text="${data.karteNo}"></td><td th:text="${data.kaMei}"></td><td th:text="${data.nyuinDate}"></td><td th:text="${data.taiinDate}"></td><td th:text="${data.teisyutu}"></td><td th:text="${data.kasidasi}">
                </td>
 
 
