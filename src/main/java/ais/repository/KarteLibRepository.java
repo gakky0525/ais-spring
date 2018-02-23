@@ -1,5 +1,7 @@
 package ais.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import ais.entity.KarteLib;
@@ -13,6 +15,13 @@ import ais.entity.KarteLib;
  * @author fhideaki
  *
  */
-public interface KarteLibRepository extends JpaRepository<KarteLib, Integer>{
+public interface KarteLibRepository extends JpaRepository<KarteLib, Integer> {
 
+	/**
+	 * カルテ貸出IDと患者名でカルテ貸出を検索します。
+	 * @param karteLibId カルテ貸出ID
+	 * @param patientName 患者名
+	 * @return エンティティのリスト
+	 */
+	List<KarteLib> findKarteLibByKarteLibIdAndPatientName(Integer karteLibId, String patientName) ;
 }
