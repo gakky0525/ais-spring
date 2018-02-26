@@ -10,7 +10,7 @@ import ais.entity.KarteLib;
  * @author fhideaki
  *
  */
-public interface KarteLibCustom {
+public interface KarteLibRepositoryCustom {
 
 	/**
 	 * カルテ貸出IDと患者名で検索します。

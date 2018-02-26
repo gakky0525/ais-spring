@@ -25,6 +25,12 @@ table {
 <form action="/samples/karteSearchCustom" method="post" th:object="${samplesForm}">
 	<input type="text" th:field="*{karteLibId}" />
 	<input type="text" th:field="*{patientName}" />
+	<input type="text" th:field="*{birthDate}" placeholder="yyyy-MM-dd" />
+	<select id="sex" name="sex" th:field="*{sex}">
+		<option value="">選択してください</option>
+		<option value="男">男</option>
+		<option value="女">女</option>
+	</select>
 	<input type="submit" value="ちゃんと検索する" />
 </form>
 <table>

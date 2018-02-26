@@ -1,5 +1,9 @@
 package ais.form;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 /**
@@ -17,4 +21,10 @@ public class SamplesForm {
 	private Integer karteLibId;
 	// 患者名
 	private String patientName;
+	// 患者誕生日
+	// DateTimeFormatアノテーションを使ってJavaで日付を表現するオブジェクトに変換します
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate birthDate;
+	// 患者性別
+	private String sex;
 }

@@ -1,5 +1,6 @@
 package ais.repository.impl;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,8 +8,8 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ais.entity.KarteLib;
-import ais.repository.KarteLibCustom;
 import ais.repository.KarteLibRepository;
+import ais.repository.KarteLibRepositoryCustom;
 
 /**
  * {@link KarteLibRepository}の実装クラス
@@ -16,7 +17,7 @@ import ais.repository.KarteLibRepository;
  * @author fhideaki
  *
  */
-public class KarteLibRepositoryImpl implements KarteLibCustom {
+public class KarteLibRepositoryImpl implements KarteLibRepositoryCustom {
 
 	@Autowired
 	EntityManager entityManager;
@@ -89,9 +90,13 @@ public class KarteLibRepositoryImpl implements KarteLibCustom {
 			// 生年月日が入力されているなら
 			// 検索条件に追加します
 			//findByAge(Is)NotNull
-			querySb.append("K.birthDate = ");
-			querySb.append(karteLib.getBirthDate());
-			querySb.append(" and ");
+
+			// まず日付型の比較にはシングルクォーテーションが必要です。文字列と同じですね
+			// 次にエンティティに入っている誕生日はJavaの日付型オブジェクトです
+			// これを文字列に変換してJPQL文字列に条件として加えましょう
+			querySb.append("K.birthDate = '");
+			querySb.append(karteLib.getBirthDate().toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			querySb.append("' and ");
 		 }
 
 		if(karteLib.getAge() != null) {
@@ -105,10 +110,11 @@ public class KarteLibRepositoryImpl implements KarteLibCustom {
 		if(karteLib.getSex() != null) {
 			// 性別が入力されているなら
 			// 検索条件に追加します
-			//
-			querySb.append("K.sex = ");
+			// 性別データは「男」「女」として登録されています
+			// つまり文字列ですね・・・ということはシングルクォーテーションで括ってあげましょう
+			querySb.append("K.sex = '");
 			querySb.append(karteLib.getSex());
-			querySb.append(" and ");
+			querySb.append("' and ");
 		 }
 
 		// JPQLの末尾の不要な「 and 」を除去します

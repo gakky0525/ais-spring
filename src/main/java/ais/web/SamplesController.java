@@ -1,5 +1,6 @@
 package ais.web;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import ais.entity.KarteLib;
 import ais.form.SamplesForm;
-import ais.repository.KarteLibCustom;
 import ais.repository.KarteLibRepository;
 
 /**
@@ -27,9 +27,6 @@ public class SamplesController {
 
 	@Autowired
 	KarteLibRepository karteLibRepository;
-
-	@Autowired
-	KarteLibCustom karteLibCustom;
 
 	@ModelAttribute
 	SamplesForm setUpForm() {
@@ -79,8 +76,15 @@ public class SamplesController {
 		karteLib.setKarteLibId(form.getKarteLibId());
 		karteLib.setPatientName(form.getPatientName());
 
+		if(form.getBirthDate() != null) {
+			// 日付型をデータベースで扱える特殊な日付型に変換します
+			karteLib.setBirthDate(Date.valueOf(form.getBirthDate()));
+		}
+
+		karteLib.setSex(form.getSex());
+
 		List<KarteLib> karteLibList =
-				karteLibCustom.findKarteLib(karteLib);
+				karteLibRepository.findKarteLib(karteLib);
 		model.addAttribute("dataList", karteLibList);
 
 		return "samples/karteList";

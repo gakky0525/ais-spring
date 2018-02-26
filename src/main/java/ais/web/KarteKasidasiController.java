@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import ais.entity.KarteLib;
 import ais.form.KasidasiForm;
-import ais.repository.KarteLibCustom;
+import ais.repository.KarteLibRepository;
 
 @Controller
 @RequestMapping("kasidasi")
@@ -23,7 +23,7 @@ public class KarteKasidasiController {
 	}
 
 	@Autowired
-	KarteLibCustom karteLibCustom;
+	KarteLibRepository karteLibRepository;
 
 	@PostMapping("search")
 	public String karteSearch(KasidasiForm form, Model model) {
@@ -37,7 +37,7 @@ public class KarteKasidasiController {
 		karteLib.setSex(form.getSex());
 
 		List<KarteLib> karteLibList =
-				karteLibCustom.findKarteLib(karteLib);
+				karteLibRepository.findKarteLib(karteLib);
 		model.addAttribute("dataList", karteLibList);
 
 		return "kasidasi/index";

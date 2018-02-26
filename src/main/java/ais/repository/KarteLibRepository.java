@@ -15,7 +15,7 @@ import ais.entity.KarteLib;
  * @author fhideaki
  *
  */
-public interface KarteLibRepository extends JpaRepository<KarteLib, Integer> {
+public interface KarteLibRepository extends JpaRepository<KarteLib, Integer>, KarteLibRepositoryCustom {
 
 	/**
 	 * カルテ貸出IDと患者名でカルテ貸出を検索します。
