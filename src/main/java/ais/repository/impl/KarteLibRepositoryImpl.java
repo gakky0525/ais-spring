@@ -37,11 +37,20 @@ public class KarteLibRepositoryImpl implements KarteLibCustom {
 		// 何を？(SELECT XXX )、どこから？(FROM XXX)、どんな条件で？(WHERE XXX)
 		StringBuilder querySb = new StringBuilder("SELECT K FROM KarteLib as K WHERE ");
 
+
 		if(karteLib.getKarteLibId() != null) {
 			// カルテ貸出IDが入力されているなら
 			// 検索条件に追加します
 			querySb.append("K.karteLibId = ");
 			querySb.append(karteLib.getKarteLibId());
+			querySb.append(" and ");
+		}
+
+		if(karteLib.getPatientId() != null) {
+			// カルテ貸出の、カルテ番号が入力されているなら
+			// 検索条件に追加します
+			querySb.append("K.patientId = ");
+			querySb.append(karteLib.getPatientId());
 			querySb.append(" and ");
 		}
 
@@ -57,6 +66,50 @@ public class KarteLibRepositoryImpl implements KarteLibCustom {
 			querySb.append("%'");
 			querySb.append(" and ");
 		}
+
+		if(karteLib.getPatientKana() != null) {
+			// カナ名が入力されているなら
+			// 検索条件に追加します
+			//
+			// 患者名は　前方一致（あいまい）　で検索しましょう
+			// JPQL(SQLでも同じ)では　あいまい検索　には　LIKE　を使います
+			querySb.append("K.patientKana LIKE '");
+			querySb.append(karteLib.getPatientKana());
+			// 「あいまい」な部分を「%」で表します
+			querySb.append("%'");
+			querySb.append(" and ");
+		}
+
+
+
+
+
+
+		if(karteLib.getBirthDate() != null) {
+			// 生年月日が入力されているなら
+			// 検索条件に追加します
+			//findByAge(Is)NotNull
+			querySb.append("K.birthDate = ");
+			querySb.append(karteLib.getBirthDate());
+			querySb.append(" and ");
+		 }
+
+		if(karteLib.getAge() != null) {
+			// 年齢が入力されているなら
+			// 検索条件に追加します
+			//findByAge(Is)NotNull
+			querySb.append("K.age = ");
+			querySb.append(karteLib.getAge());
+			querySb.append(" and ");
+		 }
+		if(karteLib.getSex() != null) {
+			// 性別が入力されているなら
+			// 検索条件に追加します
+			//
+			querySb.append("K.sex = ");
+			querySb.append(karteLib.getSex());
+			querySb.append(" and ");
+		 }
 
 		// JPQLの末尾の不要な「 and 」を除去します
 		querySb.replace(querySb.length() - 5, querySb.length(), "");

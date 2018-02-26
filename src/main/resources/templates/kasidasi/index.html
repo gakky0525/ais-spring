@@ -160,7 +160,7 @@
     </div>
 
     <div id="contents">
-        <form   id="form1" th:action="@{samples/karteList}"  th:object="${kasidasiForm}" method="get">
+        <form   id="form1" th:action="@{/kasidasi/search}"  th:object="${kasidasiForm}" method="post">
             <div id="type">
                <label class="kasidasiType"><input type="radio" name="kasidasiType"/>貸出</label>
                <label class="kasidasiType"><input type="radio" name="kasidasiType"/>返却</label>
@@ -168,22 +168,22 @@
             </div>
             <div id="common">
                 <div>
-                    <label><span class="commonCols">ID</span><input type="text" id="userId" name="userId" /></label>
+                    <label><span class="commonCols">ID</span><input type="text" id="karteLibId" name="karteLibId" th:field="*{karteLibId}"/></label>
                 </div>
                 <div>
-                    <label><span class="commonCols">カルテ番号</span><input type="text" id="karteNo" name="karteNo" /></label>
+                    <label><span class="commonCols">カルテ番号</span><input type="text" id="patientId" name="patientId" th:field="*{patientId}"/></label>
                 </div>
                 <div>
 
-                    <label><span class="commonCols">フリガナ</span><input type="text" id="kana" name="kana"/></label>
-                    <label><span class="commonCols">氏名</span><input type="text" id="name" name="name"/></label>
+                    <label><span class="commonCols">フリガナ</span><input type="text" id="patientKana" name="patientKana" th:field="*{patientKana}"   /></label>
+                    <label><span class="commonCols">氏名</span><input type="text" id="patientName" name="patientName" th:field="*{patientName}"/></label>
                 </div>
                 <div>
-                    <label><span class="commonCols">生年月日</span><input type="text" id="birth" size="10" name="birth"/></label>
-                    <label><span class="commonCols">年齢</span><input type="text" id="age" size="2" name="age"/></label>
+                  <label><span class="commonCols">生年月日</span><input type="text" id="birthDate" size="10" name="birthDate" th:field="*{birthDate}"/></label>
+                    <label><span class="commonCols">年齢</span><input type="text" id="age" size="2" name="age" th:field="*{age}"/></label>
                     <label>
                         <span class="commonCols">性別</span>
-                        <select id="gender" name="gender">
+                        <select id="sex" name="sex" th:field="*{sex}">
                             <option value="">選択してください</option>
                             <option value="男">男</option>
                             <option value="女">女</option>
@@ -201,7 +201,7 @@
                <tr class="detailCols"><th>氏名 </th><th>フリガナ</th><th>ID</th><th>カルテ番号</th><th>診療科</th><th>入院日</th><th>退院日</th><th>提出先</th><th>貸出状況</th><th>選択</th></tr>
 
                <tr th:each="data : ${dataList}">
-               <td th:text="${data.name}"></td><td th:text="${data.kana}"></td><td th:text="${data.id}"></td><td th:text="${data.karteNo}"></td><td th:text="${data.kaMei}"></td><td th:text="${data.nyuinDate}"></td><td th:text="${data.taiinDate}"></td><td th:text="${data.teisyutu}"></td><td th:text="${data.kasidasi}">
+               <td th:text="${data.patientName}"></td><td th:text="${data.patientKana}"></td><td th:text="${data.patientId}"></td><td th:text="${data.karteLibId}"></td><td th:text="${data.department}"></td><td th:text="${data.entryDate}"></td><td th:text="${data.leaveDate}"></td><td th:text="${data.takeTo}"></td><td th:text="${data.takeDate}">
                </td>
 
 

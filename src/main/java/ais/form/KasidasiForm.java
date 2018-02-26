@@ -7,8 +7,11 @@ import lombok.Data;
 @Data
 public class KasidasiForm {
 	@NotNull
-	public String karteLibId;
-
-
-
+	public Integer karteLibId;
+	public Integer patientId;
+	public String patientName;
+	public String patientKana;
+	//public birthDate birthDate;
+	public Integer age;
+	public String sex;
 }

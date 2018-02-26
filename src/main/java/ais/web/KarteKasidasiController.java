@@ -5,50 +5,42 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ais.entity.KarteLib;
-import ais.repository.KarteLibRepository;
+import ais.form.KasidasiForm;
+import ais.repository.KarteLibCustom;
 
 @Controller
-@RequestMapping("samples/karteList")
+@RequestMapping("kasidasi")
 public class KarteKasidasiController {
 
-	/*@GetMapping
-	public String index(Model model) {
-		List<KarteKasidasiDto>dataList = CsvUtil.importKasidasiCSV("C:\\Users\\yuki\\Desktop\\Java関係\\pleiades\\workspace\\ais2\\data\\kasidasi.csv");
-		model.addAttribute("dataList",dataList);
-		return "kasidasi/index" ;
-	}
-
-
-	@GetMapping(path="search")
-	public String search(Model model) {
-		return "kasidasi/search";
-	}
-
 	@ModelAttribute
-	KasidasiForm setform() {
+	KasidasiForm setUpForm() {
 		return new KasidasiForm();
 	}
-	*/
-	@Autowired
-	KarteLibRepository karteLibRepository; //(3)作成済みのリポジトリをDIする
 
-	@GetMapping("karteList")
-	public String karteList(Model model) {
-		List<KarteLib> karteLibList = karteLibRepository.findAll();
+	@Autowired
+	KarteLibCustom karteLibCustom;
+
+	@PostMapping("search")
+	public String karteSearch(KasidasiForm form, Model model) {
+		KarteLib karteLib = new KarteLib();
+		karteLib.setKarteLibId(form.getKarteLibId());
+		karteLib.setPatientId(form.getPatientId());
+		karteLib.setPatientName(form.getPatientName());
+		karteLib.setPatientKana(form.getPatientKana());
+	//	karteLib.setBirthDate(form.getBirthDate());
+		karteLib.setAge(form.getAge());
+		karteLib.setSex(form.getSex());
+
+		List<KarteLib> karteLibList =
+				karteLibCustom.findKarteLib(karteLib);
 		model.addAttribute("dataList", karteLibList);
 
-		return "samples/karteList";
+		return "kasidasi/index";
 	}
 
-	@GetMapping(path = "{karteLibId}")
-	KarteLib getkarteLibList(@PathVariable Integer karteLibId) {
-		KarteLib karteLibList = karteLibRepository.findOne(karteLibId);
-
-		return karteLibList;
-	}
 }
