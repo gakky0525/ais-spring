@@ -22,7 +22,16 @@ table {
 </style>
 </head>
 <body>
-<form action="/samples/karteSearchCustom" method="post" th:object="${samplesForm}">
+<form action="/samples/registKarte" method="post" th:object="${samplesForm}">
+	<label for="patientId">患者ID
+		<input id="patientId" type="text" th:field="*{patientId}" readonly="readonly" />
+	</label>
+	<label for="patientName">患者名
+		<input id="patientName" type="text" th:field="*{patientName}" />
+	</label>
+	<input type="submit" value="新しいカルテを登録する" />
+</form>
+<form action="/samples/searchKarteCustom" method="post" th:object="${samplesForm}">
 	<input type="text" th:field="*{karteLibId}" />
 	<input type="text" th:field="*{patientName}" />
 	<input type="text" th:field="*{birthDate}" placeholder="yyyy-MM-dd" />

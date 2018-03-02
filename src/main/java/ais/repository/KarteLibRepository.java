@@ -24,4 +24,10 @@ public interface KarteLibRepository extends JpaRepository<KarteLib, Integer>, Ka
 	 * @return エンティティのリスト
 	 */
 	List<KarteLib> findKarteLibByKarteLibIdAndPatientName(Integer karteLibId, String patientName) ;
+
+	/**
+	 * 登録されている患者IDの最大値を検索します。
+	 * @return エンティティ
+	 */
+	KarteLib findTopByOrderByPatientIdDesc() ;
 }

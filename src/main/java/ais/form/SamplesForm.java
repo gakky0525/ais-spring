@@ -19,6 +19,8 @@ public class SamplesForm {
 
 	// カルテ貸出ID
 	private Integer karteLibId;
+	// 患者ID
+	private Integer patientId;
 	// 患者名
 	private String patientName;
 	// 患者誕生日
