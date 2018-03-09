@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -66,6 +67,34 @@ public class SamplesController {
 		model.addAttribute("dataList", karteLibList);
 
 		return "samples/karteList";
+	}
+
+	@GetMapping("karte/{karteLibId}")
+	public String karte(@PathVariable Integer karteLibId, SamplesForm form, Model model) {
+		KarteLib karteLib = karteLibRepository.findOne(karteLibId);
+
+		if(karteLib != null) {
+			form.setKarteLibId(karteLib.getKarteLibId());
+			form.setPatientName(karteLib.getPatientName());
+			karteLibRepository.save(karteLib);
+		}
+
+		return "samples/karte";
+	}
+
+	@PostMapping("updateKarte")
+	public String updateKarte(SamplesForm form, Model model) {
+		KarteLib karteLib = karteLibRepository.findOne(form.getKarteLibId());
+
+		if(karteLib != null) {
+			karteLib.setPatientName(form.getPatientName());
+
+			// 画面再表示用に再度フォームに設定
+			form.setKarteLibId(karteLib.getKarteLibId());
+			form.setPatientName(karteLib.getPatientName());
+		}
+
+		return "samples/karte";
 	}
 
 
