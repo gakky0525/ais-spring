@@ -73,7 +73,7 @@ table {
 		<th>貸出状況</th>
 	</tr>
 	<tr th:each="data : ${dataList}">
-		<td th:text="${data.karteLibId}"></td>
+		<td><a th:href="@{/samples/karte/{karteLibId}(karteLibId=${data.karteLibId})}" th:text="${data.karteLibId}"/></td>
 		<td th:text="${data.patientId}"></td>
 		<td th:text="${data.patientName}"></td>
 		<td th:text="${data.patientKana}"></td>
