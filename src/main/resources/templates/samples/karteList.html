@@ -26,15 +26,28 @@ table {
 	<label for="patientId">患者ID
 		<input id="patientId" type="text" th:field="*{patientId}" readonly="readonly" />
 	</label>
+	<label for="KarteLibId">カルテ貸出ID
+		<input id="KarteLibId" type="text" th:field="*{KarteLibId}" readonly="readonly" />
+	</label>
 	<label for="patientName">患者名
 		<input id="patientName" type="text" th:field="*{patientName}" />
+	</label>
+	<label for="patientKana">フリガナ
+		<input id="patientKana" type="text" th:field="*{patientKana}" />
 	</label>
 	<input type="submit" value="新しいカルテを登録する" />
 </form>
 <form action="/samples/searchKarteCustom" method="post" th:object="${samplesForm}">
+	<label for="patientId">患者ID
 	<input type="text" th:field="*{karteLibId}" />
+	</label>
+
+	<label for="patientName">患者名
 	<input type="text" th:field="*{patientName}" />
+	</label>
+
 	<input type="text" th:field="*{birthDate}" placeholder="yyyy-MM-dd" />
+
 	<select id="sex" name="sex" th:field="*{sex}">
 		<option value="">選択してください</option>
 		<option value="男">男</option>

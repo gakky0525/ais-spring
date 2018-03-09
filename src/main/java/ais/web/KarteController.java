@@ -1,7 +1,6 @@
 package ais.web;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,12 +47,21 @@ public class KarteController {
 		// ②エンティティにデータを詰め込む
 		karteLib.setPatientId(form.getPatientId());
 		karteLib.setPatientName(form.getPatientName());
+		karteLib.setKarteLibId(form.getKarteLibId());
+		karteLib.setPatientKana(form.getPatientKana());
+		karteLib.setBirthDate(Date.valueOf(form.getBirthDate()));
+		karteLib.setSex(form.getSex());
+		karteLib.setAge(form.getAge());
+		//血液型
+	    //住所
+		//電話番号
+
 
 		// サンプルなのでダミーの値を設定しちゃいましょう
-		karteLib.setPatientKana("えーさん");
-		karteLib.setBirthDate(Date.valueOf(LocalDate.now()));
-		karteLib.setAge(1);
-		karteLib.setSex("男");
+		//karteLib.setPatientKana("えーさん");
+		//karteLib.setBirthDate(Date.valueOf(LocalDate.now()));
+		//karteLib.setAge(1);
+		//karteLib.setSex("男");
 		karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
 
