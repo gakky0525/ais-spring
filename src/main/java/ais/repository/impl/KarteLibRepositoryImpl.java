@@ -107,7 +107,7 @@ public class KarteLibRepositoryImpl implements KarteLibRepositoryCustom {
 			querySb.append(karteLib.getAge());
 			querySb.append(" and ");
 		 }
-		if(karteLib.getSex() != null) {
+		if(karteLib.getSex() != null && karteLib.getSex().length() > 0) {
 			// 性別が入力されているなら
 			// 検索条件に追加します
 			// 性別データは「男」「女」として登録されています
