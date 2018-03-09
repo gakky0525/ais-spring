@@ -26,7 +26,8 @@ public class KarteForm {
 
 	private Integer Age;
 
-	//血液型
+	private String abo;
+
     //住所
 	//電話番号
 }

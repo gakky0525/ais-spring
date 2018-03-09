@@ -152,8 +152,8 @@
 <body>
     <div id="sideNav">
         <ul style="list-style:none;">
-        <li><a href="/ais2/kasidasi" class="linkBtn">カルテ貸出</a></li>
-        <li><a href="/ais2/karteichiran" class="linkBtn">カルテ一覧</a></li>
+        <li><a href="/kasidasi" class="linkBtn">カルテ貸出</a></li>
+        <li><a href="/karteichiran" class="linkBtn">カルテ一覧</a></li>
         <li><a href="/karte" class="linkBtn">カルテ管理</a></li>
         <li id="end"><a href="" class="linkBtn" >終　　　了</a></li>
         </ul>
@@ -201,7 +201,7 @@
                <tr class="detailCols"><th>氏名 </th><th>フリガナ</th><th>ID</th><th>カルテ番号</th><th>診療科</th><th>入院日</th><th>退院日</th><th>提出先</th><th>貸出状況</th><th>選択</th></tr>
 
                <tr th:each="data : ${dataList}">
-               <td th:text="${data.patientName}"></td><td th:text="${data.patientKana}"></td><td th:text="${data.patientId}"></td><td th:text="${data.karteLibId}"></td><td th:text="${data.department}"></td><td th:text="${data.entryDate}"></td><td th:text="${data.leaveDate}"></td><td th:text="${data.takeTo}"></td><td th:text="${data.takeDate}">
+               <td th:text="${data.patientName}"></td><td th:text="${data.patientKana}"></td><td th:text="${data.patientId}"></td><td><a th:href="@{/karte/{karteLibId}(karteLibId=${data.karteLibId})}" th:text="${data.karteLibId}"/></td><td th:text="${data.department}"></td><td th:text="${data.entryDate}"></td><td th:text="${data.leaveDate}"></td><td th:text="${data.takeTo}"></td><td th:text="${data.takeDate}">
                </td>
 
 
