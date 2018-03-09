@@ -50,6 +50,15 @@ public class KarteLib {
 	// 患者性別
 	@Column
 	private String sex;
+	// 患者血液型
+	@Column
+	private String abo;
+	// 患者住所
+	@Column
+	private String addr;
+	// 患者電話番号
+	@Column
+	private String tel;
 	// 入院日
 	@Column
 	private Date entryDate;

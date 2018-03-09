@@ -14,6 +14,9 @@ create table KARTE_LIB (
   , BIRTH_DATE DATE not null
   , AGE integer not null
   , SEX character(1) not null
+  , ABO character(1)
+  , ADDR character(255)
+  , TEL character(15)
   , ENTRY_DATE DATE
   , LEAVE_DATE DATE
   , DEPARTMENT vARCHAR2(30) not null
@@ -32,6 +35,9 @@ comment on column KARTE_LIB.PATIENT_KANA is '患者名カナ';
 comment on column KARTE_LIB.BIRTH_DATE is '患者誕生日';
 comment on column KARTE_LIB.AGE is '患者年齢';
 comment on column KARTE_LIB.SEX is '患者性別';
+comment on column KARTE_LIB.ABO is '患者血液型';
+comment on column KARTE_LIB.ADDR is '患者住所';
+comment on column KARTE_LIB.TEL is '患者電話番号';
 comment on column KARTE_LIB.ENTRY_DATE is '入院日';
 comment on column KARTE_LIB.LEAVE_DATE is '退院日';
 comment on column KARTE_LIB.DEPARTMENT is '診療科';
