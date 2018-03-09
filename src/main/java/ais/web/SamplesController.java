@@ -50,9 +50,15 @@ public class SamplesController {
 		if(karteLib != null) {
 			form.setPatientId(karteLib.getPatientId() + 1);
 		}
-
 		return "samples/karteList";
 	}
+
+		// 新規登録用にデータベースに登録されているカルテ貸出IDの最大値を取得して次の患者IDを自動生成する
+		//KarteLib karteLib = karteLibRepository.findTopByOrderByKarteLibIdDesc();
+		//if(karteLib != null) {
+		//	form.setKarteLibId(karteLib.getKarteLibId() + 1);
+	 	//}　同じように、自動生成したい…
+
 
 	/**
 	 * カルテ検索メソッド
@@ -147,9 +153,9 @@ public class SamplesController {
 		// ②エンティティにデータを詰め込む
 		karteLib.setPatientId(form.getPatientId());
 		karteLib.setPatientName(form.getPatientName());
-
+		karteLib.setPatientKana(form.getPatientKana());
 		// サンプルなのでダミーの値を設定しちゃいましょう
-		karteLib.setPatientKana("えーさん");
+		//karteLib.setPatientKana("えーさん");
 		karteLib.setBirthDate(Date.valueOf(LocalDate.now()));
 		karteLib.setAge(1);
 		karteLib.setSex("男");

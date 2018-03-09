@@ -81,11 +81,6 @@ public class KarteLibRepositoryImpl implements KarteLibRepositoryCustom {
 			querySb.append(" and ");
 		}
 
-
-
-
-
-
 		if(karteLib.getBirthDate() != null) {
 			// 生年月日が入力されているなら
 			// 検索条件に追加します

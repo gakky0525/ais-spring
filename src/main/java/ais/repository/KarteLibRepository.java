@@ -30,4 +30,6 @@ public interface KarteLibRepository extends JpaRepository<KarteLib, Integer>, Ka
 	 * @return エンティティ
 	 */
 	KarteLib findTopByOrderByPatientIdDesc() ;
+
+	KarteLib findTopByOrderByKarteLibIdDesc();
 }
