@@ -170,6 +170,9 @@ form#form1 {
 	<div id="contents">
 		<form action="/karte/registKarte" method="post"
 			th:object="${karteForm}">
+			<ul>
+				<li th:each="e : ${#fields.detailedErrors()}" th:text="${e.message}" style="color:red;" />
+			</ul>
 			<div id="type">カルテ管理</div>
 			<div id="common">
 				<div>
