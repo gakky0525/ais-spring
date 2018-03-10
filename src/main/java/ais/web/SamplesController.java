@@ -82,7 +82,6 @@ public class SamplesController {
 		if(karteLib != null) {
 			form.setKarteLibId(karteLib.getKarteLibId());
 			form.setPatientName(karteLib.getPatientName());
-			karteLibRepository.save(karteLib);
 		}
 
 		return "samples/karte";
@@ -98,6 +97,7 @@ public class SamplesController {
 			// 画面再表示用に再度フォームに設定
 			form.setKarteLibId(karteLib.getKarteLibId());
 			form.setPatientName(karteLib.getPatientName());
+			karteLibRepository.save(karteLib);
 		}
 
 		return "samples/karte";
