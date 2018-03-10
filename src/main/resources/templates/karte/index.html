@@ -160,15 +160,15 @@ form#form1 {
 <body>
 	<div id="sideNav">
 		<ul style="list-style: none;">
-			<li><a href="/ais2/kanri" class="linkBtn">カルテ貸出</a></li>
-			<li><a href="/ais2/karteichiran" class="linkBtn">カルテ一覧</a></li>
-			<li><a href="/ais2/kasidasi" class="linkBtn">カルテ管理</a></li>
+			<li><a href="/kasidasi" class="linkBtn">カルテ貸出</a></li>
+			<li><a href="/karteichiran" class="linkBtn">カルテ一覧</a></li>
+			<li><a href="/karte" class="linkBtn">カルテ管理</a></li>
 			<li id="end"><a href="" class="linkBtn">終 了</a></li>
 		</ul>
 	</div>
 
 	<div id="contents">
-		<form action="karte/registKarte" method="post"
+		<form action="/karte/registKarte" method="post"
 			th:object="${karteForm}">
 			<div id="type">カルテ管理</div>
 			<div id="common">
@@ -192,7 +192,7 @@ form#form1 {
 						type="text" id="birthDate" th:field="*{birthDate}" size="10" /></label> <label><span
 						class="commonCols">年齢</span><input type="text" id="age" size="2"
 						name="age" th:field="*{age}" /></label> <label><span
-						class="commonCols">血液型</span><input type="text" id="abo" size="2" /></label>
+						class="commonCols">血液型</span><input type="text" id="abo" size="2" th:field="*{abo}"/></label>
 					<label> <span class="commonCols">性別</span> <select id="sex"
 						name="sex" th:field="*{sex}">
 							<option value="">選択してください</option>

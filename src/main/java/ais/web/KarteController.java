@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,6 +33,19 @@ public class KarteController {
 		return "karte/index";
 	}
 
+	@GetMapping("{karteLibId}")
+	public String karte(@PathVariable Integer karteLibId, KarteForm form, Model model) {
+		KarteLib karteLib = karteLibRepository.findOne(karteLibId);
+
+		if(karteLib != null) {
+			form.setKarteLibId(karteLib.getKarteLibId());
+			form.setPatientName(karteLib.getPatientName());
+		//	karteLibRepository.save(karteLib);
+		}
+
+		return "karte/index";
+	}
+
 	@PostMapping("registKarte")
 	public String registKarte(KarteForm form, Model model) {
 
@@ -52,7 +66,7 @@ public class KarteController {
 		karteLib.setBirthDate(Date.valueOf(form.getBirthDate()));
 		karteLib.setSex(form.getSex());
 		karteLib.setAge(form.getAge());
-		//血液型
+		karteLib.setAbo(form.getAbo());
 	    //住所
 		//電話番号
 
