@@ -72,9 +72,11 @@ public class KarteController {
 		karteLib.setSex(form.getSex());
 		karteLib.setAge(form.getAge());
 		karteLib.setAbo(form.getAbo());
-	    //住所
-		//電話番号
+		karteLib.setAddr(form.getAddr());
 
+
+
+		//電話番号// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
 
 		// サンプルなのでダミーの値を設定しちゃいましょう
 		//karteLib.setPatientKana("えーさん");

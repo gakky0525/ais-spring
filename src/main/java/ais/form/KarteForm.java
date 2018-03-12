@@ -11,25 +11,29 @@ import lombok.Data;
 @Data
 public class KarteForm {
 	@NotNull
+	// 患者名
 	private String patientName;
-
+	// 患者ID
 	private Integer patientId;
-
+	// カルテ貸出ID
 	private Integer karteLibId;
-
+	// 患者カナ
 	private String patientKana;
 
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	// 患者誕生日
 	private LocalDate birthDate;
-
+	// 患者性別　
 	private String sex;
-
+	// 患者年齢
 	private Integer Age;
-
+	// 患者血液型
 	private String abo;
+	// 患者住所
+	private String addr;
 
-    //住所
-	//電話番号
+
+	// 患者電話番号// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
 }
 
 

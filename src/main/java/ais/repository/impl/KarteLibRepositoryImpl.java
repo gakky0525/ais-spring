@@ -111,10 +111,17 @@ public class KarteLibRepositoryImpl implements KarteLibRepositoryCustom {
 			querySb.append(karteLib.getSex());
 			querySb.append("' and ");
 		 }
-		if(karteLib.getAbo() != null ) {
+		if(karteLib.getAbo() != null && karteLib.getAbo().length() > 0) {
 
 			querySb.append("K.abo = '");
 			querySb.append(karteLib.getAbo());
+			querySb.append("' and ");
+		 }
+
+		if(karteLib.getAddr() != null && karteLib.getAddr().length() > 0) {
+
+			querySb.append("K.Addr = '");
+			querySb.append(karteLib.getAddr());
 			querySb.append("' and ");
 		 }
 		// JPQLの末尾の不要な「 and 」を除去します
