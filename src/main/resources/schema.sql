@@ -14,7 +14,7 @@ create table KARTE_LIB (
   , BIRTH_DATE DATE not null
   , AGE integer not null
   , SEX character(1) not null
-  , ABO character(1)
+  , ABO character(2)
   , ADDR character(255)
   , TEL character(15)
   , ENTRY_DATE DATE

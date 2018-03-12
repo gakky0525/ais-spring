@@ -16,10 +16,18 @@ import ais.entity.KarteLib;
 import ais.form.KarteForm;
 import ais.repository.KarteLibRepository;
 
+/**
+ * カルテ登録コントローラ
+ *
+ * カルテの登録／更新／削除を行う画面のコントローラクラスです。
+ *
+ * @author 長岐由岐
+ *
+ */
 @Controller
 @RequestMapping("karte")
-
 public class KarteController {
+
 	@Autowired
 	KarteLibRepository karteLibRepository;
 
@@ -28,37 +36,46 @@ public class KarteController {
 		return new KarteForm();
 	}
 
+	/**
+	 * 初期表示メソッド
+	 * @param model 画面とデータをやり取りするためのオブジェクト
+	 * @return 遷移先画面のテンプレートパス
+	 */
 	@GetMapping
 	public String index(Model model) {
-
 		return "karte/index";
 	}
 
+	/**
+	 * ID指定の初期表示メソッド
+	 * @param karteLibId カルテ貸出ID
+	 * @param form 画面入力を受け付けるフォームオブジェクト
+	 * @param model 画面とデータをやり取りするためのオブジェクト
+	 * @return 遷移先画面のテンプレートパス
+	 */
 	@GetMapping("{karteLibId}")
-	public String karte(@PathVariable Integer karteLibId, KarteForm form, Model model) {
+	public String indexById(@PathVariable Integer karteLibId, KarteForm form, Model model) {
 		KarteLib karteLib = karteLibRepository.findOne(karteLibId);
 
 		if(karteLib != null) {
 			form.setKarteLibId(karteLib.getKarteLibId());
 			form.setPatientName(karteLib.getPatientName());
-		//	karteLibRepository.save(karteLib);
 		}
 
 		return "karte/index";
 	}
 
+	/**
+	 * カルテを登録します。
+	 * @param form 画面入力を受け付けるフォームオブジェクト
+	 * @param bindingResult バリデーション結果を受け取るオブジェクト
+	 * @return 遷移先画面のテンプレートパス
+	 */
 	@PostMapping("registKarte")
 	public String registKarte(KarteForm form, BindingResult bindingResult, Model model) {
-
 		if(bindingResult.hasErrors()) {
 			return "karte/index";
 		}
-
-		/*
-		 * ①エンティティの作成
-		 * ②エンティティにデータを詰め込む
-		 * ③Respository.saveでエンティティをデータベースに登録
-		 */
 
 		// ①エンティティの作成
 		KarteLib karteLib = new KarteLib();
@@ -74,15 +91,8 @@ public class KarteController {
 		karteLib.setAbo(form.getAbo());
 		karteLib.setAddr(form.getAddr());
 
-
-
 		//電話番号// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
 
-		// サンプルなのでダミーの値を設定しちゃいましょう
-		//karteLib.setPatientKana("えーさん");
-		//karteLib.setBirthDate(Date.valueOf(LocalDate.now()));
-		//karteLib.setAge(1);
-		//karteLib.setSex("男");
 		karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
 
