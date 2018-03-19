@@ -80,7 +80,7 @@
 				<td th:text="${data.patientKana}"></td>
 				<td th:text="${data.patientId}"></td>
 				<td><a th:href="@{/karte/{karteLibId}(karteLibId=${data.karteLibId})}" th:text="${data.karteLibId}" /></td>
-				<td th:text="${data.department}"></td>
+				<td th:text="${data.departmentMst.name}"></td>
 				<td th:text="${data.entryDate}"></td>
 				<td th:text="${data.leaveDate}"></td>
 				<td th:text="${data.takeTo}"></td>
