@@ -1,6 +1,7 @@
 package ais.web;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ais.entity.DepartmentMst;
 import ais.entity.KarteLib;
 import ais.form.KarteForm;
+import ais.repository.DepartmentMstRepository;
 import ais.repository.KarteLibRepository;
 
 /**
@@ -31,6 +34,9 @@ public class KarteController {
 	@Autowired
 	KarteLibRepository karteLibRepository;
 
+	@Autowired
+	DepartmentMstRepository departmentMstRepository;
+
 	@ModelAttribute
 	KarteForm setUpForm() {
 		return new KarteForm();
@@ -43,6 +49,9 @@ public class KarteController {
 	 */
 	@GetMapping
 	public String index(Model model) {
+		// 診療科のプルダウンを表示するためにデータ取得
+		model.addAttribute("departmentMstList", getDepartmentMstList());
+
 		return "karte/index";
 	}
 
@@ -61,6 +70,9 @@ public class KarteController {
 			form.setKarteLibId(karteLib.getKarteLibId());
 			form.setPatientName(karteLib.getPatientName());
 		}
+
+		// 診療科のプルダウンを表示するためにデータ取得
+		model.addAttribute("departmentMstList", getDepartmentMstList());
 
 		return "karte/index";
 	}
@@ -96,9 +108,23 @@ public class KarteController {
 		//karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
 
+		// 診療科マスタと紐づけます
+		DepartmentMst departmentMst = new DepartmentMst();
+		departmentMst.setDepartmentMstId(form.getDepartmentMstId());
+		karteLib.setDepartmentMst(departmentMst);
+
 		// ③Respository.saveでエンティティをデータベースに登録
 		karteLibRepository.save(karteLib);
 
+		// 診療科のプルダウンを表示するためにデータ取得
+		model.addAttribute("departmentMstList", getDepartmentMstList());
+
 		return "karte/index";
+	}
+
+
+
+	private List<DepartmentMst> getDepartmentMstList() {
+		return departmentMstRepository.findAll();
 	}
 }

@@ -78,7 +78,11 @@
 				<table border="3" rules="all" style="margin: auto;">
 					<tr>
 						<td>入院科</td>
-						<td>内科</td>
+						<td>
+							<select id="department" th:field="*{departmentMstId}">
+								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
+							</select>
+						</td>
 						<td>主治医</td>
 						<td>長岐 由樹</td>
 						<td>死亡日</td>

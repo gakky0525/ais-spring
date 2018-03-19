@@ -73,9 +73,6 @@ public class KarteLib {
 	// 返却日
 	@Column
 	private Date returnDate;
-	// 貸出先
-	@Column
-	private String takeTo;
 	// 貸出状況
 	@Column
 	private String status;
@@ -83,4 +80,8 @@ public class KarteLib {
 	@ManyToOne
 	@JoinColumn(name="department_mst_id")
 	private DepartmentMst departmentMst;
+
+	@ManyToOne
+	@JoinColumn(name="take_to_mst_id")
+	private TakeToMst takeToMst;
 }

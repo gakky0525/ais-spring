@@ -32,6 +32,8 @@ public class KarteForm {
 	// 患者住所
 	private String addr;
 
+	// 診療科マスタID
+	private Integer departmentMstId;
 
 	// 患者電話番号// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
 }
