@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ais.entity.KarteLib;
+import ais.enums.Abo;
 import ais.form.SamplesForm;
 import ais.repository.KarteLibRepository;
 
@@ -159,7 +160,8 @@ public class SamplesController {
 		karteLib.setBirthDate(Date.valueOf(LocalDate.now()));
 		karteLib.setAge(1);
 		karteLib.setSex("男");
-		karteLib.setDepartment("診療科");
+		karteLib.setAbo(String.valueOf(Abo.valueOf(form.getAbo()).ordinal()));
+		//karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
 
 		// ③Respository.saveでエンティティをデータベースに登録

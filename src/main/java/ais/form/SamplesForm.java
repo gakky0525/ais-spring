@@ -29,6 +29,8 @@ public class SamplesForm {
 	private LocalDate birthDate;
 	// 患者性別
 	private String sex;
+	// 血液型
+	private String abo;
 	//フリガナ
 	private String patientKana;
 }

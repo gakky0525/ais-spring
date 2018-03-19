@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -65,9 +67,6 @@ public class KarteLib {
 	// 退院日
 	@Column
 	private Date leaveDate;
-	// 診療科
-	@Column
-	private String department;
 	// 貸出日
 	@Column
 	private Date takeDate;
@@ -80,4 +79,8 @@ public class KarteLib {
 	// 貸出状況
 	@Column
 	private String status;
+
+	@ManyToOne
+	@JoinColumn(name="department_mst_id")
+	private DepartmentMst departmentMst;
 }

@@ -93,7 +93,7 @@ public class KarteController {
 
 		//電話番号// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
 
-		karteLib.setDepartment("診療科");
+		//karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
 
 		// ③Respository.saveでエンティティをデータベースに登録

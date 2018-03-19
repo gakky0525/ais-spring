@@ -29,6 +29,14 @@ table {
 	<label for="patientName">患者名
 		<input id="patientName" type="text" th:field="*{patientName}" />
 	</label>
+	<label for="abo">血液型
+		<select id="abo" th:field="*{abo}">
+			<option th:value="${T(ais.enums.Abo).A}" th:utext="${T(ais.enums.Abo).A}"/>
+			<option th:value="${T(ais.enums.Abo).B}" th:utext="${T(ais.enums.Abo).B}"/>
+			<option th:value="${T(ais.enums.Abo).O}" th:utext="${T(ais.enums.Abo).O}"/>
+			<option th:value="${T(ais.enums.Abo).AB}" th:utext="${T(ais.enums.Abo).AB}"/>
+		</select>
+	</label>
 	<input type="submit" value="カルテを更新する" />
 </form>
 </body>
