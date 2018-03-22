@@ -102,8 +102,9 @@ public class KarteController {
 		karteLib.setAge(form.getAge());
 		karteLib.setAbo(form.getAbo());
 		karteLib.setAddr(form.getAddr());
+		karteLib.setTel(form.getTel());
 
-		//電話番号// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
+	// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
 
 		//karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");

@@ -19,4 +19,6 @@ public class KasidasiForm {
 	private LocalDate birthDate;
 	public Integer age;
 	public String sex;
+	private String addr;
+	private String tel;
 }
