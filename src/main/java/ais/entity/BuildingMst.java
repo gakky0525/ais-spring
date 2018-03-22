@@ -14,23 +14,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "DEPARTMENT_MST")
+@Table(name = "BUILDING_MST")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DepartmentMst {
-	// 診療科マスタID
+public class BuildingMst {
+	// 病棟マスタID
 	@Id
 	@GeneratedValue
-	private Integer departmentMstId;
+	private Integer buildingMstId;
 
 	// 名前
 	@Column
 	private String name;
 
-	@OneToMany(mappedBy = "departmentMst")
+	@OneToMany(mappedBy = "buildingMst")
 	private List<KarteLib> karteLibs;
-
-	@OneToMany(mappedBy = "leaveDepartmentMst")
-	private List<KarteLib> leaveKarteLibs;
 }

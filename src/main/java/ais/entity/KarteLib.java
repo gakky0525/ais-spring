@@ -30,6 +30,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class KarteLib {
 
+	// ---------------------------------
+	// 以下はカルテを表すプロパティ
+
 	// カルテ貸出ID
 	@Id
 	@GeneratedValue
@@ -67,6 +70,45 @@ public class KarteLib {
 	// 退院日
 	@Column
 	private Date leaveDate;
+	// 死亡日
+	@Column
+	private Date dieDate;
+	// 主治医 FIXME これは恐らく病院外のお医者さんの名前では？
+	@Column
+	private String familyDoctor;
+	// 入院病棟
+	@ManyToOne
+	@JoinColumn(name="building_mst_id")
+	private BuildingMst buildingMst;
+	// 退院時病棟
+	@ManyToOne
+	@JoinColumn(name="leave_building_mst_id")
+	private BuildingMst leaveBuildingMst;
+	// 担当医1
+	@ManyToOne
+	@JoinColumn(name="doctor_mst_id1")
+	private DoctorMst doctorMst1;
+	// 担当医2
+	@ManyToOne
+	@JoinColumn(name="doctor_mst_id2")
+	private DoctorMst doctorMst2;
+	// 解剖フラグ
+	@Column
+	private String dissectionFlg;
+	// 紹介状フラグ
+	@Column
+	private String letterFlg;
+	// 救急車利用フラグ
+	@Column
+	private String ambulanceFlg;
+	// 転帰
+	private String outcome;
+
+
+
+	// ---------------------------------
+	// 以下はカルテ貸出状況を表すプロパティ
+
 	// 貸出日
 	@Column
 	private Date takeDate;
