@@ -34,6 +34,7 @@ create table KARTE_LIB (
   , LEAVE_DATE DATE
   , TAKE_DATE DATE
   , RETURN_DATE DATE
+  , LEAVE_DEPARTMENT_MST_ID integer
   , TAKE_TO_MST_ID integer
   , STATUS character(1) not null
   , constraint KARTE_LIB_PKC primary key (KARTE_LIB_ID)
@@ -44,6 +45,9 @@ alter table KARTE_LIB
 
 alter table KARTE_LIB
   add constraint KARTE_LIB_FK2 foreign key (TAKE_TO_MST_ID) references TAKE_TO_MST(TAKE_TO_MST_ID);
+
+alter table KARTE_LIB
+  add constraint KARTE_LIB_FK3 foreign key (LEAVE_DEPARTMENT_MST_ID) references DEPARTMENT_MST(DEPARTMENT_MST_ID);
 
 comment on table DEPARTMENT_MST is '診療科マスタ';
 comment on column DEPARTMENT_MST.DEPARTMENT_MST_ID is '診療科マスタID';

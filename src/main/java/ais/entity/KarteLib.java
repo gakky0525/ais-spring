@@ -82,6 +82,10 @@ public class KarteLib {
 	private DepartmentMst departmentMst;
 
 	@ManyToOne
+	@JoinColumn(name="leave_department_mst_id")
+	private DepartmentMst leaveDepartmentMst;
+
+	@ManyToOne
 	@JoinColumn(name="take_to_mst_id")
 	private TakeToMst takeToMst;
 }
