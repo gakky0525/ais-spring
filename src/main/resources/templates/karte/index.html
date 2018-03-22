@@ -133,7 +133,7 @@
 						</td>
 						<td>退院科</td>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
+							<select id="leaveDepartment" th:field="*{leaveDepartmentMstId}">
 								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
 							</select>
 						</td>

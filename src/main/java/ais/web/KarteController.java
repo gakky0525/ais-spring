@@ -113,6 +113,10 @@ public class KarteController {
 		DepartmentMst departmentMst = new DepartmentMst();
 		departmentMst.setDepartmentMstId(form.getDepartmentMstId());
 		karteLib.setDepartmentMst(departmentMst);
+		// 退院科マスタと紐づけます
+		DepartmentMst leaveDepartmentMst = new DepartmentMst();
+		leaveDepartmentMst.setDepartmentMstId(form.getLeaveDepartmentMstId());
+		karteLib.setLeaveDepartmentMst(leaveDepartmentMst);
 
 		// ③Respository.saveでエンティティをデータベースに登録
 		karteLibRepository.save(karteLib);
