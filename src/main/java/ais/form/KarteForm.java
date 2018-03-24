@@ -49,7 +49,10 @@ public class KarteForm {
 	// 退院科マスタID
 	private Integer leaveDepartmentMstId;
 
-	// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
+	//主治医マスタID
+	private Integer DoctorMstId;
+
+	// 入院日// 退院日// 貸出日// 返却日// 貸出状況
 }
 
 

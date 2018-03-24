@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ais.entity.DepartmentMst;
+import ais.entity.DoctorMst;
 import ais.entity.KarteLib;
 import ais.form.KarteForm;
 import ais.repository.DepartmentMstRepository;
@@ -104,7 +105,7 @@ public class KarteController {
 		karteLib.setAddr(form.getAddr());
 		karteLib.setTel(form.getTel());
 
-	// 入院日// 退院日// 診療科// 貸出日// 返却日// 貸出状況
+	// 入院日// 貸出日// 返却日// 貸出状況
 
 		//karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
@@ -113,10 +114,15 @@ public class KarteController {
 		DepartmentMst departmentMst = new DepartmentMst();
 		departmentMst.setDepartmentMstId(form.getDepartmentMstId());
 		karteLib.setDepartmentMst(departmentMst);
+
 		// 退院科マスタと紐づけます
 		DepartmentMst leaveDepartmentMst = new DepartmentMst();
 		leaveDepartmentMst.setDepartmentMstId(form.getLeaveDepartmentMstId());
 		karteLib.setLeaveDepartmentMst(leaveDepartmentMst);
+
+		//主治医マスタと紐づけます??
+
+
 
 		// ③Respository.saveでエンティティをデータベースに登録
 		karteLibRepository.save(karteLib);
@@ -132,4 +138,6 @@ public class KarteController {
 	private List<DepartmentMst> getDepartmentMstList() {
 		return departmentMstRepository.findAll();
 	}
+	private List<DoctorMst> getDoctorMstList() {
+		return doctorMstRepository.findAll();
 }
