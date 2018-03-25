@@ -18,6 +18,7 @@ import ais.entity.DoctorMst;
 import ais.entity.KarteLib;
 import ais.form.KarteForm;
 import ais.repository.DepartmentMstRepository;
+import ais.repository.DoctorMstRepository;
 import ais.repository.KarteLibRepository;
 
 /**
@@ -37,6 +38,9 @@ public class KarteController {
 
 	@Autowired
 	DepartmentMstRepository departmentMstRepository;
+
+	@Autowired
+	DoctorMstRepository doctorMstRepository;
 
 	@ModelAttribute
 	KarteForm setUpForm() {
@@ -138,6 +142,8 @@ public class KarteController {
 	private List<DepartmentMst> getDepartmentMstList() {
 		return departmentMstRepository.findAll();
 	}
+
 	private List<DoctorMst> getDoctorMstList() {
 		return doctorMstRepository.findAll();
+	}
 }
