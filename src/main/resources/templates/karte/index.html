@@ -77,90 +77,79 @@
 			<div id="detail">
 				<table border="3" rules="all" style="margin: auto;">
 					<tr>
-						<td>入院科</td>
+						<th>入院科</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
+							<select id="departmentMstId" th:field="*{departmentMstId}">
 								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
 							</select>
 						</td>
-						<td>主治医</td>
+						<th>入院日</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
+
+						</td>
+						<th style="white-space: nowrap;">入院病棟</th>
+						<td>
+							<select id="buildingMst" th:field="*{buildingMstId}">
+								<option th:each="buildingMst : ${buildingMstList}" th:value="${buildingMst.buildingMstId}" th:utext="${buildingMst.name}"/>
 							</select>
 						</td>
-						<td>死亡日</td>
+
+						<th>主治医</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
+<!-- 仮 -->					<select id="doctorMstId1" th:field="*{doctorMstId1}">
+								<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
 							</select>
 						</td>
-						<td>入院病棟</td>
+					</tr>
+					<tr>
+
+						<th style="white-space: nowrap;">担当医１</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
+							<select id="doctorMstId1" th:field="*{doctorMstId1}">
+								<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
 							</select>
 						</td>
-						<td>担当医１</td>
+						<th style="white-space: nowrap;">担当医２</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
+							<select id="doctorMstId2" th:field="*{doctorMstId2}">
+								<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
 							</select>
 						</td>
-						<td>解剖有無</td>
+						<th style="white-space: nowrap;">退院時病棟</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
+							<select id="leavebuildingMstId" th:field="*{leavebuildingMstId}">
+								<option th:each="buildingMst : ${buildingMstList}" th:value="${buildingMst.buildingMstId}" th:utext="${buildingMst.name}"/>
 							</select>
 						</td>
-						<td>入院日</td>
+						<th>退院日</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
 						</td>
-						<td>担当医２</td>
+
+					</tr>
+					<tr>
+						<th>転帰</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
 						</td>
-						<td>退院日</td>
+						<th>紹介状</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
+
 						</td>
-						<td>退院科</td>
+
+						<th>死亡日</th>
 						<td>
-							<select id="leaveDepartment" th:field="*{leaveDepartmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
+
 						</td>
-						<td>紹介状</td>
+						<th style="white-space: nowrap;">解剖有無</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
+
 						</td>
-						<td>退院時病棟</td>
+					</tr>
+					<tr>
+						<th>救急車</th>
 						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
+
 						</td>
-						<td>救急車</td>
-						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
-						</td>
-						<td>転帰</td>
-						<td>
-							<select id="department" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
-						</td>
+
 					</tr>
 				</table>
 			</div>

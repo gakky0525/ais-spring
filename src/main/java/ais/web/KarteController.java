@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ais.entity.BuildingMst;
 import ais.entity.DepartmentMst;
 import ais.entity.DoctorMst;
 import ais.entity.KarteLib;
 import ais.form.KarteForm;
+import ais.repository.BuildingMstRepository;
 import ais.repository.DepartmentMstRepository;
 import ais.repository.DoctorMstRepository;
 import ais.repository.KarteLibRepository;
@@ -42,6 +44,12 @@ public class KarteController {
 	@Autowired
 	DoctorMstRepository doctorMstRepository;
 
+	@Autowired
+	BuildingMstRepository buildingMstRepository;
+
+	@Autowired
+	BuildingMstRepository buildingMstRepository1;
+
 	@ModelAttribute
 	KarteForm setUpForm() {
 		return new KarteForm();
@@ -56,7 +64,9 @@ public class KarteController {
 	public String index(Model model) {
 		// 診療科のプルダウンを表示するためにデータ取得
 		model.addAttribute("departmentMstList", getDepartmentMstList());
-
+		model.addAttribute("doctorMstList", getDoctorMstList());
+		model.addAttribute("buildingMstList", getBuildingMstList());
+		//model.addAttribute("leavebuildingMstList", getBuildingMstList());
 		return "karte/index";
 	}
 
@@ -124,9 +134,36 @@ public class KarteController {
 		leaveDepartmentMst.setDepartmentMstId(form.getLeaveDepartmentMstId());
 		karteLib.setLeaveDepartmentMst(leaveDepartmentMst);
 
-		//主治医マスタと紐づけます??
+		//担当医１マスタと紐づけます
+		DoctorMst doctorMst1 = new DoctorMst();
+		doctorMst1.setDoctorMstId(form.getDoctorMstId1());
+		karteLib.setDoctorMst1(doctorMst1);
 
+		//担当医２マスタと紐づけます
+		DoctorMst doctorMst2 = new DoctorMst();
+		doctorMst2.setDoctorMstId(form.getDoctorMstId2());
+		karteLib.setDoctorMst2(doctorMst2);
 
+		//入院病棟マスタと紐づけます
+		BuildingMst buildingMst = new BuildingMst();
+		buildingMst.setBuildingMstId(form.getBuildingMstId());
+		karteLib.setBuildingMst(buildingMst);
+
+		//退院時病棟マスタと紐づけます
+		BuildingMst leavebuildingMst = new BuildingMst();
+		leavebuildingMst.setBuildingMstId(form.getLeavebuildingMstId());
+		karteLib.setBuildingMst(leavebuildingMst);
+										//leavebuildingMstをsetBuildingMstにセットしてkarteLibに渡している??
+		
+/*class KarteLib {
+		 private BuildingMsg buildingMst;
+		 ・・・
+		 public void setBuildingMst(BuildingMst buildingMsg) {
+		  this.buildingMst = buildingMst;
+
+*/
+		
+		karteLib.setBuildingMst(buildingMst);
 
 		// ③Respository.saveでエンティティをデータベースに登録
 		karteLibRepository.save(karteLib);
@@ -146,4 +183,10 @@ public class KarteController {
 	private List<DoctorMst> getDoctorMstList() {
 		return doctorMstRepository.findAll();
 	}
+
+	private List<BuildingMst> getBuildingMstList() {
+		return buildingMstRepository.findAll();
+	}
+
+
 }

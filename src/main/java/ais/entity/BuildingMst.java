@@ -30,4 +30,5 @@ public class BuildingMst {
 
 	@OneToMany(mappedBy = "buildingMst")
 	private List<KarteLib> karteLibs;
+
 }

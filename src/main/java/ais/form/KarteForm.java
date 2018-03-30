@@ -2,6 +2,7 @@ package ais.form;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,9 +16,10 @@ public class KarteForm {
 	// 患者名
 	private String patientName;
 	@NotNull
+	@Digits(fraction = 10, integer = 10)
 	// 患者ID
 	private Integer patientId;
-	@NotNull
+	@Digits(fraction = 10, integer = 10)
 	// カルテ貸出ID
 	private Integer karteLibId;
 	@NotEmpty
@@ -29,7 +31,7 @@ public class KarteForm {
 	@NotEmpty
 	// 患者性別　
 	private String sex;//@NotEmpty又は@Pattern(regex="regexp", flag=)??
-	@NotNull
+	@Digits(fraction = 2, integer = 2)
 	// 患者年齢
 	private Integer Age;
 	@NotEmpty
@@ -38,7 +40,7 @@ public class KarteForm {
 	@NotEmpty
 	// 患者住所
 	private String addr;
-	@NotNull
+	@Digits(fraction = 2, integer = 1 )
 	// 患者電話番号
 	private String tel;
 
@@ -49,8 +51,17 @@ public class KarteForm {
 	// 退院科マスタID
 	private Integer leaveDepartmentMstId;
 
-	//主治医マスタID
-	private Integer DoctorMstId;
+	//担当医１ID
+	private Integer doctorMstId1;
+
+	//担当医１ID
+	private Integer doctorMstId2;
+
+	//入院病棟
+	private Integer buildingMstId;
+
+	//退院時病棟
+	private Integer leavebuildingMstId;
 
 	// 入院日// 退院日// 貸出日// 返却日// 貸出状況
 }

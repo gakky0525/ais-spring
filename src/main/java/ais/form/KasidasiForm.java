@@ -2,7 +2,7 @@ package ais.form;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Digits;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,10 +11,10 @@ import lombok.Data;
 
 @Data
 public class KasidasiForm {
-	@NotNull
+	@Digits(fraction = 10, integer = 10 )
 	// カルテ貸出ID
 	public Integer karteLibId;
-	@NotNull
+	@Digits(fraction = 10, integer = 10 )
 	// 患者ID
 	public Integer patientId;
 	@NotEmpty
@@ -26,7 +26,7 @@ public class KasidasiForm {
 	@DateTimeFormat(pattern="yyyy-MM-dd")//誕生日から年齢を計算できるようにならないか…??
 	// 患者誕生日
 	private LocalDate birthDate;
-	@NotNull
+	@Digits(fraction = 2, integer = 1 )
 	// 患者年齢
 	public Integer age;
 	@NotEmpty
@@ -35,7 +35,7 @@ public class KasidasiForm {
 	@NotEmpty
 	// 患者住所
 	private String addr;
-	@NotNull
+	@Digits(fraction = 10, integer = 10 )
 	// 患者電話番号
 	private String tel;
 }
