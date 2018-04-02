@@ -3,157 +3,161 @@
 <head>
 <meta charset="utf-8" />
 <title>カルテ管理</title>
+<link rel="stylesheet" href="/lib/jquery-ui/jquery-ui.min.css" />
 <link rel="stylesheet" href="/css/karte.css" />
 </head>
 <body>
-	<div id="sideNav">
-		<ul style="list-style: none;">
-			<li><a href="/kasidasi" class="linkBtn">カルテ貸出</a></li>
-			<li><a href="/karteichiran" class="linkBtn">カルテ一覧</a></li>
-			<li><a href="/karte" class="linkBtn">カルテ管理</a></li>
-			<li id="end"><a href="" class="linkBtn">終 了</a></li>
+<div id="sideNav">
+	<ul style="list-style: none;">
+		<li><a href="/kasidasi" class="linkBtn">カルテ貸出</a></li>
+		<li><a href="/karteichiran" class="linkBtn">カルテ一覧</a></li>
+		<li><a href="/karte" class="linkBtn">カルテ管理</a></li>
+		<li id="end"><a href="" class="linkBtn">終 了</a></li>
+	</ul>
+</div>
+<div id="contents">
+	<form action="/karte/registKarte" method="post" th:object="${karteForm}">
+		<ul>
+			<li th:each="e : ${#fields.detailedErrors()}" th:text="${e.message}" style="color: red;" />
 		</ul>
-	</div>
-
-	<div id="contents">
-		<form action="/karte/registKarte" method="post" th:object="${karteForm}">
-			<ul>
-				<li th:each="e : ${#fields.detailedErrors()}" th:text="${e.message}" style="color: red;" />
-			</ul>
-			<div id="type">カルテ管理</div>
-			<div id="common">
-				<div>
-					<label><span class="commonCols">ID</span>
+		<div id="type">カルテ管理</div>
+		<div id="common">
+			<div>
+				<label><span class="commonCols">ID</span>
 					<input type="text" id="patientId" th:field="*{patientId}" />
-					</label>
-				</div>
-				<div>
-					<label><span class="commonCols">カルテ番号</span>
+				</label>
+			</div>
+			<div>
+				<label><span class="commonCols">カルテ番号</span>
 					<input type="text" id="karteLibId" th:field="*{karteLibId}" />
-					</label>
-				</div>
-				<div>
-					<label><span class="commonCols">フリガナ</span>
-						<input type="text" id="patientKana" th:field="*{patientKana}" />
-					</label>
-					<label>
-						<span class="commonCols">氏名</span>
-						<input type="text" id="patientName" th:field="*{patientName}" />
-					</label>
-				</div>
-				<div>
-					<label><span class="commonCols">生年月日</span>
-						<input type="text" id="birthDate" th:field="*{birthDate}" size="10" />
-					</label>
-					<label><span class="commonCols">年齢</span>
-						<input type="text" id="age" size="2" name="age" th:field="*{age}" />
-					</label>
-					<label><span class="commonCols">血液型</span>
-						<input type="text" id="abo" size="4" th:field="*{abo}" />
-					</label>
-					<label><span class="commonCols">性別</span>
-						<select id="sex" name="sex" th:field="*{sex}">
-							<option value="">選択してください</option>
-							<option value="男">男</option>
-							<option value="女">女</option>
+				</label>
+			</div>
+			<div>
+				<label><span class="commonCols">フリガナ</span>
+					<input type="text" id="patientKana" th:field="*{patientKana}" />
+				</label>
+				<label><span class="commonCols">氏名</span>
+					<input type="text" id="patientName" th:field="*{patientName}" />
+				</label>
+			</div>
+			<div>
+				<label><span class="commonCols">生年月日</span>
+					<input type="text" id="birthDate" th:field="*{birthDate}" size="10" />
+				</label>
+				<label><span class="commonCols">年齢</span>
+					<input type="text" id="age" size="2" name="age" th:field="*{age}" />
+				</label>
+				<label><span class="commonCols">血液型</span>
+					<input type="text" id="abo" size="4" th:field="*{abo}" />
+				</label>
+				<label><span class="commonCols">性別</span>
+					<select id="sex" name="sex" th:field="*{sex}">
+						<option value="">選択してください</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</label>
+			</div>
+			<div>
+				<label><span class="commonCols">住所</span>
+					<input type="text" id="addr" th:field="*{addr}" />
+				</label>
+				<label><span class="commonCols">電話番号</span>
+					<input type="text" id="tel" th:field="*{tel}"/>
+				</label>
+			</div>
+		</div>
+		<div id="controls" style="clear: both;">
+			<input type="submit" id="touroku" value="登録" />
+			<input type="submit" id="hennsyuu" value="編集" />
+			<input type="submit" id="sakujo" value="削除" />
+		</div>
+
+		<div id="detail">
+			<table id="karteDet" rules="all">
+				<tr>
+					<th>入院科</th>
+					<td>
+						<select id="departmentMstId" th:field="*{departmentMstId}">
+							<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
 						</select>
-					</label>
-				</div>
-				<div>
-					<label><span class="commonCols">住所</span>
-							<input type="text" id="addr" th:field="*{addr}" />
-					</label>
-					<label><span class="commonCols">電話番号</span>
-							<input type="text" id="tel" th:field="*{tel}"/>
-					</label>
-				</div>
-			</div>
-			<div id="controls" style="clear: both;">
-				<input type="submit" id="touroku" value="登録" />
-				<input type="submit" id="hennsyuu" value="編集" />
-				<input type="submit" id="sakujo" value="削除" />
-			</div>
-
-			<div id="detail">
-				<table border="3" rules="all" style="margin: auto;">
-					<tr>
-						<th>入院科</th>
-						<td>
-							<select id="departmentMstId" th:field="*{departmentMstId}">
-								<option th:each="departmentMst : ${departmentMstList}" th:value="${departmentMst.departmentMstId}" th:utext="${departmentMst.name}"/>
-							</select>
-						</td>
-						<th>入院日</th>
-						<td>
-
-						</td>
-						<th style="white-space: nowrap;">入院病棟</th>
-						<td>
-							<select id="buildingMst" th:field="*{buildingMstId}">
-								<option th:each="buildingMst : ${buildingMstList}" th:value="${buildingMst.buildingMstId}" th:utext="${buildingMst.name}"/>
-							</select>
-						</td>
-
-						<th>主治医</th>
-						<td>
-<!-- 仮 -->					<select id="doctorMstId1" th:field="*{doctorMstId1}">
-								<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
-							</select>
-						</td>
-					</tr>
-					<tr>
-
-						<th style="white-space: nowrap;">担当医１</th>
-						<td>
-							<select id="doctorMstId1" th:field="*{doctorMstId1}">
-								<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
-							</select>
-						</td>
-						<th style="white-space: nowrap;">担当医２</th>
-						<td>
-							<select id="doctorMstId2" th:field="*{doctorMstId2}">
-								<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
-							</select>
-						</td>
-						<th style="white-space: nowrap;">退院時病棟</th>
-						<td>
-							<select id="leavebuildingMstId" th:field="*{leavebuildingMstId}">
-								<option th:each="buildingMst : ${buildingMstList}" th:value="${buildingMst.buildingMstId}" th:utext="${buildingMst.name}"/>
-							</select>
-						</td>
-						<th>退院日</th>
-						<td>
-						</td>
-
-					</tr>
-					<tr>
-						<th>転帰</th>
-						<td>
-						</td>
-						<th>紹介状</th>
-						<td>
-
-						</td>
-
-						<th>死亡日</th>
-						<td>
-
-						</td>
-						<th style="white-space: nowrap;">解剖有無</th>
-						<td>
-
-						</td>
-					</tr>
-					<tr>
-						<th>救急車</th>
-						<td>
-
-						</td>
-
-					</tr>
-				</table>
-			</div>
-		</form>
-	</div>
+					</td>
+					<th>入院日</th>
+					<td>
+					</td>
+					<th style="white-space: nowrap;">入院病棟</th>
+					<td>
+						<select id="buildingMst" th:field="*{buildingMstId}">
+							<option th:each="buildingMst : ${buildingMstList}" th:value="${buildingMst.buildingMstId}" th:utext="${buildingMst.name}"/>
+						</select>
+					</td>
+					<th>主治医</th>
+					<td>
+<!-- 仮 -->				<select id="doctorMstId1" th:field="*{doctorMstId1}">
+							<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>担当医１</th>
+					<td>
+						<select id="doctorMstId1" th:field="*{doctorMstId1}">
+							<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
+						</select>
+					</td>
+					<th>担当医２</th>
+					<td>
+						<select id="doctorMstId2" th:field="*{doctorMstId2}">
+							<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
+						</select>
+					</td>
+					<th>退院時病棟</th>
+					<td>
+						<select id="leavebuildingMstId" th:field="*{leavebuildingMstId}">
+							<option th:each="buildingMst : ${buildingMstList}" th:value="${buildingMst.buildingMstId}" th:utext="${buildingMst.name}"/>
+						</select>
+					</td>
+					<th>退院日</th>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<th>転帰</th>
+					<td>
+					</td>
+					<th>紹介状</th>
+					<td>
+					</td>
+					<th>死亡日</th>
+					<td>
+					</td>
+					<th>解剖有無</th>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<th>救急車</th>
+					<td>
+						<label class="lvAmbFlg" for="ambulanceFlg_ON">
+							<input type="radio" id="ambulanceFlg_ON" th:field="*{ambulanceFlg}" value="1"/><span>利用した</span>
+						</label>
+						<label class="lvAmbFlg" for="ambulanceFlg_OFF">
+							<input type="radio" id="ambulanceFlg_OFF" th:field="*{ambulanceFlg}" value="0"/><span>利用していない</span>
+						</label>
+					</td>
+					<td colspan="6">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<script src="/lib/jquery/jquery.js"></script>
+<script src="/lib/jquery-ui/jquery-ui.min.js"></script>
+<script>
+$(function() {
+	$('#birthDate').datepicker({dateFormat: 'yy-mm-dd'});
+});
+</script>
 </body>
 </html>
