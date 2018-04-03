@@ -118,7 +118,8 @@
 						</select>
 					</td>
 					<th>退院日</th>
-					<td>
+					<td><input type="text" id="leaveDate" th:field="*{leaveDate}" size="10" />
+
 					</td>
 				</tr>
 				<tr>
@@ -129,7 +130,7 @@
 					<td>
 					</td>
 					<th>死亡日</th>
-					<td>
+					<td><input type="text" id="dieDate" th:field="*{dieDate}" size="10" />
 					</td>
 					<th>解剖有無</th>
 					<td>
@@ -160,6 +161,12 @@ $(function() {
 });
 $(function() {
 	$('#entryDate').datepicker({dateFormat: 'yy-mm-dd'});
+});
+$(function() {
+	$('#leaveDate').datepicker({dateFormat: 'yy-mm-dd'});
+});
+$(function() {
+	$('#dieDate').datepicker({dateFormat: 'yy-mm-dd'});
 });
 </script>
 </body>

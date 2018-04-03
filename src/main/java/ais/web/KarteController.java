@@ -119,7 +119,9 @@ public class KarteController {
 		karteLib.setAddr(form.getAddr());
 		karteLib.setTel(form.getTel());
 		karteLib.setEntryDate(Date.valueOf(form.getEntryDate()));
-	// 入院日// 貸出日// 返却日// 貸出状況
+		karteLib.setLeaveDate(Date.valueOf(form.getLeaveDate()));
+		karteLib.setDieDate(Date.valueOf(form.getDieDate()));
+	// 貸出日// 返却日// 貸出状況
 
 		//karteLib.setDepartment("診療科");
 		karteLib.setStatus("0");
