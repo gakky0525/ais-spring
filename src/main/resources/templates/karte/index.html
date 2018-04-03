@@ -83,7 +83,7 @@
 						</select>
 					</td>
 					<th>入院日</th>
-					<td>
+					<td><input type="text" id="entryDate" th:field="*{entryDate}" size="10" />
 					</td>
 					<th style="white-space: nowrap;">入院病棟</th>
 					<td>
@@ -157,6 +157,9 @@
 <script>
 $(function() {
 	$('#birthDate').datepicker({dateFormat: 'yy-mm-dd'});
+});
+$(function() {
+	$('#entryDate').datepicker({dateFormat: 'yy-mm-dd'});
 });
 </script>
 </body>

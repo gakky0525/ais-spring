@@ -63,7 +63,11 @@ public class KarteForm {
 	//退院時病棟
 	private Integer leavebuildingMstId;
 
-	// 入院日// 退院日// 貸出日// 返却日// 貸出状況
+	// 入院日
+
+	private LocalDate entryDate;
+
+	// 退院日// 貸出日// 返却日// 貸出状況
 
 	// 救急車利用
 	private String ambulanceFlg;

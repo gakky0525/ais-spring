@@ -118,7 +118,7 @@ public class KarteController {
 		karteLib.setAbo(form.getAbo());
 		karteLib.setAddr(form.getAddr());
 		karteLib.setTel(form.getTel());
-
+		karteLib.setEntryDate(Date.valueOf(form.getEntryDate()));
 	// 入院日// 貸出日// 返却日// 貸出状況
 
 		//karteLib.setDepartment("診療科");
@@ -154,7 +154,7 @@ public class KarteController {
 		leavebuildingMst.setBuildingMstId(form.getLeavebuildingMstId());
 		karteLib.setBuildingMst(leavebuildingMst);
 										//leavebuildingMstをsetBuildingMstにセットしてkarteLibに渡している??
-		
+
 /*class KarteLib {
 		 private BuildingMsg buildingMst;
 		 ・・・
@@ -162,7 +162,7 @@ public class KarteController {
 		  this.buildingMst = buildingMst;
 
 */
-		
+
 		karteLib.setBuildingMst(buildingMst);
 
 		// ③Respository.saveでエンティティをデータベースに登録
