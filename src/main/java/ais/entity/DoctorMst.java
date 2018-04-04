@@ -33,4 +33,7 @@ public class DoctorMst {
 
 	@OneToMany(mappedBy = "doctorMst2")
 	private List<KarteLib> karteLibs2;
+
+	@OneToMany(mappedBy = "familyDoctorMst")
+	private List<KarteLib> karteLibs3;
 }

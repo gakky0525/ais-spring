@@ -54,7 +54,7 @@ create table KARTE_LIB (
   , DIE_DATE DATE
   , LEAVE_DEPARTMENT_MST_ID integer
   , TAKE_TO_MST_ID integer
-  , FAMILY_DOCTOR VARCHAR(60)
+  , FAMILY_DOCTOR_MST_ID integer
   , BUILDING_MST_ID integer
   , LEAVE_BUILDING_MST_ID integer
   , DOCTOR_MST_ID1 integer

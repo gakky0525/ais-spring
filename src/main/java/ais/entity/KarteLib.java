@@ -73,9 +73,10 @@ public class KarteLib {
 	// 死亡日
 	@Column
 	private Date dieDate;
-	// 主治医 FIXME これは恐らく病院外のお医者さんの名前では？
-	@Column
-	private String familyDoctor;
+	// 主治医
+	@ManyToOne
+	@JoinColumn(name="family_doctor_mst_id")
+	private DoctorMst familyDoctorMst;
 	// 入院病棟
 	@ManyToOne
 	@JoinColumn(name="building_mst_id")
