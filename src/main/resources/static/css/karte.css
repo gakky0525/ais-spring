@@ -165,7 +165,16 @@ form#form1 {
 	display:block;
 	font-size:.8em;
 }
-.lvOut{
+
+.lvOut {
 	float: left;
 	font-size:.8em;
+}
+
+#tdOut:last-child:after {
+	content:'.';
+	visibility:hidden;
+	height:0;
+	display:block;
+	clear:both;
 }
