@@ -123,17 +123,31 @@
 					</td>
 				</tr>
 				<tr>
-					<th>転帰</th>
-					<td>
-					</td>
+
+
 					<th>紹介状</th>
 					<td>
+						<label class="lvAmbFlg" for="letterFlg_ON">
+							<input type="radio" id="letterFlg_ON" th:field="*{letterFlg}" value="1"/><span>有</span>
+						</label>
+						<label class="lvAmbFlg" for="letterFlg_OFF">
+							<input type="radio" id="letterFlg_OFF" th:field="*{letterFlg}" value="0"/><span>無</span>
+						</label>
 					</td>
 					<th>死亡日</th>
 					<td><input type="text" id="dieDate" th:field="*{dieDate}" size="10" />
 					</td>
+
 					<th>解剖有無</th>
 					<td>
+						<label class="lvAmbFlg" for="dissectionFlg_ON">
+							<input type="radio" id="dissectionFlg_ON" th:field="*{dissectionFlg}" value="1"/><span>有</span>
+						</label>
+						<label class="lvAmbFlg" for="dissectionFlg_OFF">
+							<input type="radio" id="dissectionFlg_OFF" th:field="*{dissectionFlg}" value="0"/><span>無</span>
+						</label>
+					</td>
+					<td colspan="2">
 					</td>
 				</tr>
 				<tr>
@@ -146,7 +160,20 @@
 							<input type="radio" id="ambulanceFlg_OFF" th:field="*{ambulanceFlg}" value="0"/><span>利用していない</span>
 						</label>
 					</td>
-					<td colspan="6">
+					<th>転帰</th>
+					<td colspan="5" style="clear:both">
+						<label class="lvOut" for="outcome_1">
+							<input type="radio" id="outcome_1" th:field="*{outcome}" value="1"/><span>軽快</span>
+						</label>
+						<label class="lvOut" for="outcome_2">
+							<input type="radio" id="outcome_2" th:field="*{outcome}" value="2"/><span>治癒</span>
+						</label>
+						<label class="lvOut" for="outcome_3">
+							<input type="radio" id="outcome_3" th:field="*{outcome}" value="3"/><span>転院</span>
+						</label>
+						<label class="lvOut" for="outcome_4" style="clear:both">
+							<input type="radio" id="outcome_4" th:field="*{outcome}" value="4"/><span>死亡</span>
+						</label>
 					</td>
 				</tr>
 			</table>

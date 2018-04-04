@@ -70,11 +70,17 @@ public class KarteForm {
 	private LocalDate leaveDate;
 	//死亡日
 	private LocalDate dieDate;
-	
+
 	// 貸出日// 返却日// 貸出状況
 
 	// 救急車利用
 	private String ambulanceFlg;
+	//転帰
+	private String outcome;
+	//紹介状フラグ
+	private String letterFlg;
+	// 解剖フラグ
+	private String dissectionFlg;
 }
 
 
