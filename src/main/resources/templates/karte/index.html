@@ -93,7 +93,7 @@
 					</td>
 					<th>主治医</th>
 					<td>
-<!-- 仮 -->				<select id="doctorMstId1" th:field="*{doctorMstId1}">
+					<select id="familyDoctorMstId" th:field="*{familyDoctorMstId}">
 							<option th:each="doctorMst : ${doctorMstList}" th:value="${doctorMst.doctorMstId}" th:utext="${doctorMst.name}"/>
 						</select>
 					</td>
@@ -119,12 +119,9 @@
 					</td>
 					<th>退院日</th>
 					<td><input type="text" id="leaveDate" th:field="*{leaveDate}" size="10" />
-
 					</td>
 				</tr>
 				<tr>
-
-
 					<th>紹介状</th>
 					<td>
 						<label class="lvAmbFlg" for="letterFlg_ON">

@@ -84,10 +84,20 @@ public class KarteController {
 		if(karteLib != null) {
 			form.setKarteLibId(karteLib.getKarteLibId());
 			form.setPatientName(karteLib.getPatientName());
+			form.setPatientKana(karteLib.getPatientKana());
+			form.setBirthDate(karteLib.getBirthDate().toLocalDate());
+			form.setAge(karteLib.getAge());
+			form.setAbo(karteLib.getAbo());
+			form.setSex(karteLib.getSex());
+			form.setAddr(karteLib.getAddr());
+			form.setTel(karteLib.getTel());
+			form.setDepartmentMstList(karteLib.getDepartmentMstList());
 		}
 
 		// 診療科のプルダウンを表示するためにデータ取得
 		model.addAttribute("departmentMstList", getDepartmentMstList());
+		model.addAttribute("doctorMstList", getDoctorMstList());
+		model.addAttribute("buildingMstList", getBuildingMstList());
 
 		return "karte/index";
 	}
@@ -132,9 +142,14 @@ public class KarteController {
 		karteLib.setDepartmentMst(departmentMst);
 
 		// 退院科マスタと紐づけます
-		DepartmentMst leaveDepartmentMst = new DepartmentMst();
+/*		DepartmentMst leaveDepartmentMst = new DepartmentMst();
 		leaveDepartmentMst.setDepartmentMstId(form.getLeaveDepartmentMstId());
 		karteLib.setLeaveDepartmentMst(leaveDepartmentMst);
+*/
+		//主治医マスタと紐づけます
+		DoctorMst familyDoctorMst = new DoctorMst();
+		familyDoctorMst.setDoctorMstId(form.getFamilyDoctorMstId());
+		karteLib.setDoctorMst1(familyDoctorMst);
 
 		//担当医１マスタと紐づけます
 		DoctorMst doctorMst1 = new DoctorMst();
@@ -154,7 +169,7 @@ public class KarteController {
 		//退院時病棟マスタと紐づけます
 		BuildingMst leavebuildingMst = new BuildingMst();
 		leavebuildingMst.setBuildingMstId(form.getLeavebuildingMstId());
-		karteLib.setBuildingMst(leavebuildingMst);
+		karteLib.setLeaveBuildingMst(leavebuildingMst);
 										//leavebuildingMstをsetBuildingMstにセットしてkarteLibに渡している??
 
 /*class KarteLib {
@@ -165,7 +180,6 @@ public class KarteController {
 
 */
 
-		karteLib.setBuildingMst(buildingMst);
 
 		// ③Respository.saveでエンティティをデータベースに登録
 		karteLibRepository.save(karteLib);

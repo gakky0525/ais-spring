@@ -66,15 +66,10 @@
 			<tr class="detailCols">
 				<th>氏名</th>
 				<th>フリガナ</th>
-				<th>性別</th>
 				<th>ID</th>
 				<th>カルテ番号</th>
 				<th>診療科</th>
 				<th>入院日</th>
-				<th>入院病棟</th>
-				<th>担当医1</th>
-				<th>担当医2</th>
-				<th>退院科</th>
 				<th>退院日</th>
 				<th>提出先</th>
 				<th>貸出状況</th>
@@ -83,19 +78,20 @@
 			<tr th:each="data : ${dataList}">
 				<td th:text="${data.patientName}"></td>
 				<td th:text="${data.patientKana}"></td>
-				<td th:text="${data.sex}"></td>
 				<td th:text="${data.patientId}"></td>
 				<td><a th:href="@{/karte/{karteLibId}(karteLibId=${data.karteLibId})}" th:text="${data.karteLibId}" /></td>
 				<td th:text="${data.departmentMst.name}"></td>
 				<td th:text="${data.entryDate}"></td>
-				<td th:text="${data.buildingMst.name}"></td>
-				<td th:text="${data.doctorMst1.name}"></td>
-				<td th:text="${data.doctorMst2.name}"></td>
-				<td th:text="${data.leaveDepartmentMst.name}"></td>
 				<td th:text="${data.leaveDate}"></td>
-				<!-- <td th:text="${data.takeTo}"></td> -->
 				<td style="color:red;font-weight:bold;">ここは貸出先マスタから名前を表示するように修正が必要！診療科の表示を参考に</td>
-				<td th:text="${data.takeDate}"></td>
+				<td th:text="${data.status}"></td>
+				<td><p><input type="checkbox" name="bulkSelect" value="${data.karteLibId}"/></p></td>
+
+			<!--<td th:text="${data.buildingMst.name}"></td>
+   				<td th:text="${data.doctorMst1.name}"></td>
+				<td th:text="${data.doctorMst2.name}"></td>
+		 		<td th:text="${data.leaveDepartmentMst.name}"></td>
+                <td th:text="${data.takeTo}"></td> -->
 			</tr>
 		</table>
 	</div>

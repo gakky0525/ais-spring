@@ -30,10 +30,10 @@ public class KarteForm {
 	private LocalDate birthDate;
 	@NotEmpty
 	// 患者性別　
-	private String sex;//@NotEmpty又は@Pattern(regex="regexp", flag=)??
+	private String sex;
 	@Digits(fraction = 2, integer = 2)
 	// 患者年齢
-	private Integer Age;
+	private Integer age;
 	@NotEmpty
 	// 患者血液型
 	private String abo;
@@ -51,6 +51,9 @@ public class KarteForm {
 	// 退院科マスタID
 	private Integer leaveDepartmentMstId;
 
+	//主治医マスタID
+	private Integer familyDoctorMstId;
+
 	//担当医１ID
 	private Integer doctorMstId1;
 
@@ -63,27 +66,32 @@ public class KarteForm {
 	//退院時病棟
 	private Integer leavebuildingMstId;
 
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	// 入院日
 	private LocalDate entryDate;
 
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	// 退院日
 	private LocalDate leaveDate;
+
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	//死亡日
 	private LocalDate dieDate;
 
-	// 貸出日// 返却日// 貸出状況
-
 	// 救急車利用
 	private String ambulanceFlg;
+
 	//転帰
 	private String outcome;
+
 	//紹介状フラグ
 	private String letterFlg;
+
 	// 解剖フラグ
 	private String dissectionFlg;
 }
 
-
+// 貸出日// 返却日// 貸出状況
 /*★データ登録処理の実装
 ★①画面入力を受け取るフォームクラスを作る
 ★②コントローラとフォームをひもづける
